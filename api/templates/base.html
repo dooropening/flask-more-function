@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI 4 o</title>
+<link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml" sizes="any" >
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+       <nav class="nav">
+            {% block nav %}
+            <ul class="nav-ul">
+                <li><a href="{{ url_for('country.country_quotes') }}">By country</a></li>
+            </ul>
+            {% endblock %}
+       </nav>
+    </header>
+    <main>
+        <h1>Welcome to AI 4 O</h1>
+        <p>This is a sample static page resembling the structure of the provided URL.</p>
+    </main>
+</body>
+</html>
+
+
