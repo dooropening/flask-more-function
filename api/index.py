@@ -1,19 +1,25 @@
-from flask import Flask
-from flask import render_template
-from api.utils import generate_breadcrumbs  # 导入生成面包屑导航的函数
-
+from flask import Flask, Blueprint, render_template
+from flask_login import LoginManager
+from .auth import auth
+from .models import User
+from .mongodb_connect import db
+from .route import bp as main_bp
 
 app = Flask(__name__)
+app.secret_key = 'ample_scope'
+
+login_manager = LoginManager()
+login_manager.login_view = 'auth.login'
+login_manager.init_app(app)
 
 
-@app.route('/')
-def home():
-    breadcrumbs = [{'name': 'Home'}]  # 面包屑列表，初始为首页
+@login_manager.user_loader
+def load_user(username):
+    user = db.users.find_one({'username': username})
+    if user:
+        return User(user['username'])
+    return None
 
-    return render_template('index.html', breadcrumbs=breadcrumbs)
 
-
-@app.route('/category/<category_name>')
-def category(category_name):
-    breadcrumbs = generate_breadcrumbs(category_name)  # 调用生成面包屑导航的函数
-    return render_template('category.html', category_name=category_name, breadcrumbs=breadcrumbs)
+app.register_blueprint(main_bp)
+app.register_blueprint(auth)

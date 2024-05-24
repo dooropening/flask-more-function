@@ -3,40 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI-4-O</title>
-    <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml" sizes="any" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> AI-4-O </title>
+    <meta name="description" content="AI-4-O">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml" sizes="any">
     <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles1.css') }}"></head>
-    <button onclick='addToFavorites()'>收藏</button>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
 <body>
     <header>
-        <h1>AI-4-O ---ai for all</h1>
-        <p>对独立开发者和创业者来说，找到前1000个早期用户太关键了。</p>
+        <h1>AI-4-O -- ai for all</h1>
+        <p>It's a practise about using python flask build a website.</p>
         <nav class="nav">
             {% block nav %}
             <ul class="nav-ul">
+                <li><a href="{{ url_for('main.home') }}">Home</a></li>
+                <li><a href="{{ url_for('main.about') }}">About</a></li>
+                <li><a href="{{ url_for('auth.login') }}">Log In</a></li>
+                <!-- 更多链接可以根据需要添加 -->
             </ul>
             {% endblock %}
-       </nav>
+        </nav>
     </header>
     <main>
-        <section id="introduction">
-            <h2>为啥呢？因为这帮人能给你提宝贵的意见，帮你把产品做得更好，还能给你这个小生意打下好基础。</h2>
-        </section>
-        <section id="channels">
-            <h2>利用这些渠道，你就能：</h2>
-            <ul>
-                <li>把你的产品推销出去，让更多人知道</li>
-                <li>找到你的目标用户，那些最有可能对你的产品感兴趣的人</li>
-                <li>简化产品推广的过程，让你把更多时间花在开发牛掰的产品上</li>
-            </ul>
-        </section>
-        <!-- 更多的section可以根据需要添加 -->
+        <h2>It's a practise about using python flask build a website.</h2>
+    <button onclick="addToFavorites()">添加至收藏夹</button>
     </main>
     <footer>
-        <p>© 2024 1000UserGuide. All rights reserved.</p>
+        <p>© 2024 AI-4-O. All rights reserved.</p>
     </footer>
-
-7    <script src="/static/addToFavorites.js"></script>
+    <script src="{{ url_for('static', filename='addToFavorites.js') }}"></script>
 </body>
 </html>

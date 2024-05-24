@@ -2,14 +2,15 @@
 
 {% block nav %}
   <ul>
+    <li><a href="{{ url_for('main.home') }}">Home</a></li>
     {% if g.user %}
-      <li><span>{{ g.user['username'] }}</span>
-      <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
+      <li><span>{{ g.user['username'] }}</span></li>
+      <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
     {% else %}
-      <li><a href="{{ url_for('auth.register') }}">Register</a>
-      <li><a href="{{ url_for('auth.login') }}">Log In</a>
+      <li><a href="{{ url_for('auth.register') }}">Register</a></li>
+      <li><a href="{{ url_for('auth.login') }}">Log In</a></li>
     {% endif %}
-  </ul>
+</ul>
 {% endblock %}
 
 {% block header %}
@@ -23,7 +24,7 @@
 {% endblock %}
 
 {% block content %}
-  <form method="post">
+<form method="post" action="{{ url_for('auth.login') }}">
     <label for="username">Username</label>
     <input name="username" id="username" required>
     <label for="password">Password</label>
