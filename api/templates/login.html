@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% block h1 %}AI-4-O -- AI for all {% endblock %}
+
 {% block nav %}
   <ul>
     <li><a href="{{ url_for('main.home') }}">Home</a></li>
@@ -13,9 +15,6 @@
 </ul>
 {% endblock %}
 
-{% block header %}
-  <h1>{% block title %}Log In{% endblock %}</h1>
-{% endblock %}
 
 {% block msg %}
   {% for message in get_flashed_messages() %}
@@ -24,11 +23,13 @@
 {% endblock %}
 
 {% block content %}
-<form method="post" action="{{ url_for('auth.login') }}">
-    <label for="username">Username</label>
-    <input name="username" id="username" required>
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" required>
-    <input type="submit" value="Log In">
-  </form>
+    <h2>Login here. It's a practise about using python flask build a website.</h2>
+
+    <form method="post" action="{{ url_for('auth.login') }}">
+        <label for="username">Username</label>
+        <input name="username" id="username" required>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" required>
+        <input type="submit" value="Log In">
+    </form>
 {% endblock %}

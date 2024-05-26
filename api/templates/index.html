@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title> AI-4-O </title>
+    <title>{% block title %} AI-4-O {% endblock %}</title>
     <meta name="description" content="AI-4-O">
     <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml" sizes="any">
     <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
@@ -12,7 +12,7 @@
 </head>
 <body>
     <header>
-        <h1>AI-4-O -- ai for all</h1>
+        <h1>{% block h1 %}AI-4-O -- Ai for all{% endblock %}</h1>
         <p>It's a practise about using python flask build a website.</p>
         <nav class="nav">
             {% block nav %}
@@ -26,8 +26,16 @@
         </nav>
     </header>
     <main>
+        <button onclick="addToFavorites()">添加至收藏夹</button>
         <h2>It's a practise about using python flask build a website.</h2>
-    <button onclick="addToFavorites()">添加至收藏夹</button>
+        <msg>
+            {% block msg %}
+            {% endblock %}
+        </msg>
+        <content>
+            {% block content %}
+            {% endblock %}
+        </content>
     </main>
     <footer>
         <p>© 2024 AI-4-O. All rights reserved.</p>

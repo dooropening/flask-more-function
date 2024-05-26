@@ -12,9 +12,9 @@
 </head>
 <body>
     <header>
-                {% block h1 %}
-                {% endblock %}
+        <h1>{% block h1 %}AI-4-O -- ai for all{% endblock %}</h1>
         <p>It's a practise about using python flask build a website.</p>
+
         <nav class="nav">
             {% block nav %}
             <ul class="nav-ul">
@@ -28,10 +28,15 @@
     </header>
     <main>
     <button onclick="addToFavorites()">添加至收藏夹</button>
-        {% block msg %}
-        {% endblock %}
-        {% block content %}
-        {% endblock %}
+        <msg>
+            {% block msg %}
+            {% endblock %}
+        </msg>
+        <content>
+            {% block content %}
+                <h2>It's a practise about using python flask build a website.</h2>
+            {% endblock %}
+        </content>
     </main>
     <footer>
         <p>© 2024 AI-4-O. All rights reserved.</p>
