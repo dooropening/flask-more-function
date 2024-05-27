@@ -1,9 +1,8 @@
-from flask import Blueprint, render_template, request, redirect, url_for, flash
+from flask import Blueprint, render_template, request, redirect, url_for, flash, g
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, logout_user, login_required
 from .mongodb_connect import db
 from .models import User
-
 
 auth = Blueprint('auth', __name__)
 
@@ -46,6 +45,7 @@ def login():
         user = db.users.find_one({'username': username})
         if user and check_password_hash(user['password'], password):
             user_obj = User(user['username'])
+            # user_obj.authenticate()  # 设置用户为已认证
             login_user(user_obj)
             return redirect(url_for('main.home'))
 
@@ -58,4 +58,5 @@ def login():
 @login_required
 def logout():
     logout_user()
+    flash('You have been logged out.', 'info')
     return redirect(url_for('auth.login'))

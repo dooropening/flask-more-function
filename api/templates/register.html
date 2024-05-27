@@ -2,18 +2,6 @@
 
 {% block h1 %}AI-4-O -- AI for all {% endblock %}
 
-{% block auth %}
-    <ul class="auth">
-        {% if g.user %}
-          <li><span>{{ g.user['username'] }}</span>
-          <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
-        {% else %}
-          <li><a href="{{ url_for('auth.register') }}">Register</a>
-          <li><a href="{{ url_for('auth.login') }}">Log In</a>
-        {% endif %}
-    </ul>
-{% endblock %}
-
 
 {% block msg %}
   {% for message in get_flashed_messages() %}

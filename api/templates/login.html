@@ -2,18 +2,6 @@
 
 {% block h1 %}AI-4-O -- AI for all {% endblock %}
 
-{% block auth %}
-    <ul>
-        {% if g.user %}
-          <li><span>{{ g.user['username'] }}</span></li>
-          <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
-        {% else %}
-          <li><a href="{{ url_for('auth.register') }}">Register</a></li>
-          <li><a href="{{ url_for('auth.login') }}">Log In</a></li>
-        {% endif %}
-    </ul>
-{% endblock %}
-
 
 {% block msg %}
   {% for message in get_flashed_messages() %}
@@ -22,8 +10,7 @@
 {% endblock %}
 
 {% block content %}
-    <button id="favorite" onclick="addToFavorites()">添加至收藏夹</button>
-    <h2>Login here. It's a practise about using python flask build a website.</h2>
+    <h2>Please log in.</h2>
 
     <form method="post" action="{{ url_for('auth.login') }}">
         <label for="username">Username</label>
@@ -32,4 +19,7 @@
         <input type="password" name="password" id="password" required>
         <input type="submit" value="Log In">
     </form>
+    <div style="line-height: 2rem; text-indent: 230px;">
+                  Or don't have an account, sign up.<a href="{{ url_for('auth.register') }}">Register</a>
+    </div>
 {% endblock %}

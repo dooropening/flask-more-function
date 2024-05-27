@@ -2,6 +2,7 @@
 from flask import Blueprint, render_template, redirect, url_for
 from .utils import generate_breadcrumbs  # 假设这个函数在utils.py中
 from flask import flash
+from flask_login import login_user, logout_user, login_required
 
 
 bp = Blueprint('main', __name__)
