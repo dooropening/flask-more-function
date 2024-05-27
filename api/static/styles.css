@@ -1,3 +1,6 @@
+html {
+  font-size: 20px; /* 设置基准字体大小为16px */
+}
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -13,10 +16,17 @@ header {
 }
 
 nav ul {
+    float: left;
     list-style-type: none;
     padding: 0;
+    display: inline;
 }
-
+nav ul.tool-ul {
+    float: right;
+    list-style-type: none;
+    padding: 0;
+    display: inline;
+}
 nav ul li {
     display: inline;
     margin: 0 10px;
@@ -39,4 +49,12 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
+}
+
+.wrapper {
+  display: flex;
+}
+
+.wrapper > div {
+  flex: 1;
 }

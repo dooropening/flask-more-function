@@ -2,17 +2,16 @@
 
 {% block h1 %}AI-4-O -- AI for all {% endblock %}
 
-{% block nav %}
-  <ul>
-    <li><a href="{{ url_for('main.home') }}">Home</a></li>
-    {% if g.user %}
-      <li><span>{{ g.user['username'] }}</span></li>
-      <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
-    {% else %}
-      <li><a href="{{ url_for('auth.register') }}">Register</a></li>
-      <li><a href="{{ url_for('auth.login') }}">Log In</a></li>
-    {% endif %}
-</ul>
+{% block auth %}
+    <ul>
+        {% if g.user %}
+          <li><span>{{ g.user['username'] }}</span></li>
+          <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
+        {% else %}
+          <li><a href="{{ url_for('auth.register') }}">Register</a></li>
+          <li><a href="{{ url_for('auth.login') }}">Log In</a></li>
+        {% endif %}
+    </ul>
 {% endblock %}
 
 
@@ -23,6 +22,7 @@
 {% endblock %}
 
 {% block content %}
+    <button id="favorite" onclick="addToFavorites()">添加至收藏夹</button>
     <h2>Login here. It's a practise about using python flask build a website.</h2>
 
     <form method="post" action="{{ url_for('auth.login') }}">

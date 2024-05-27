@@ -12,31 +12,53 @@
 </head>
 <body>
     <header>
-        <h1>{% block h1 %}AI-4-O -- ai for all{% endblock %}</h1>
-        <p>It's a practise about using python flask build a website.</p>
-
-        <nav class="nav">
-            {% block nav %}
-            <ul class="nav-ul">
-                <li><a href="{{ url_for('main.home') }}">Home</a></li>
-                <li><a href="{{ url_for('main.about') }}">About</a></li>
-                <li><a href="{{ url_for('auth.login') }}">Log In</a></li>
-                <!-- 更多链接可以根据需要添加 -->
-            </ul>
-            {% endblock %}
-        </nav>
+        <div>
+             <nav>
+                <ul class="auth-ul">
+                    {% if g.user %}
+                      <li><span>{{ g.user['username'] }}</span></li>
+                      <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
+                    {% else %}
+                      <li><a href="{{ url_for('auth.register') }}">Register</a></li>
+                      <li><a href="{{ url_for('auth.login') }}">Log In</a></li>
+                    {% endif %}
+                </ul>
+             </nav>
+        </div>
+        <div>
+            <nav>
+                <ul class="tool-ul">
+                    <li><button id="favorite" onclick="addToFavorites()">收藏</button></li>
+                    <li><button id="lang" onclick="changeLanguage()">语言</button></li>
+                    </ul>
+             </nav>
+        </div>
+        <div>
+            <h1>{% block h1 %}AI-4-O -- Ai for all{% endblock %}</h1>
+            <p>It's a practise about using python flask build a website.</p>
+        </div>
+        <div class="wrapper">
+            <nav>
+                    <ul class="main-ul">
+                        <li><a href="{{ url_for('main.home') }}">Home</a></li>
+                        <li><a href="{{ url_for('main.about') }}">About</a></li>
+                    </ul>
+            </nav>
+        </div>
     </header>
     <main>
-    <button onclick="addToFavorites()">添加至收藏夹</button>
+
         <msg>
             {% block msg %}
             {% endblock %}
         </msg>
-        <content>
-            {% block content %}
-                <h2>It's a practise about using python flask build a website.</h2>
-            {% endblock %}
-        </content>
+        <div>
+            <content>
+                {% block content %}
+                    <h2>It's a practise about using python flask build a website.</h2>
+                {% endblock %}
+            </content>
+        </div>
     </main>
     <footer>
         <p>© 2024 AI-4-O. All rights reserved.</p>
